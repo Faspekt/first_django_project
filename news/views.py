@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import News
 from .forms import NewsForm
-
+from django.views.generic import DetailView
 
 
 
@@ -12,6 +12,13 @@ def news_home(request):
         "all_news": news
     }
     return render(request, "news/news_home.html", data)
+
+
+class NewsDetailView(DetailView):
+    model = News
+    template_name = "news/detail-view.html"
+    context_object_name = "news"
+
 
 
 def create_news(request):

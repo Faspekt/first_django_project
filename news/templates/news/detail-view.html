@@ -1,0 +1,20 @@
+{% extends "main/layout.html" %}
+
+
+{% block title %}{{ news.name_news }}{% endblock %}
+
+
+{% block content %}
+
+<div class="features">
+    <h1>{{ news.name_news }}</h1>
+    <p>{{ news.data_create }}</p>
+    <p>{{ news.full_text }}</p>
+
+
+    <a href="{% url 'news:news_home'%}"> <button class = "button"> Вернуться назад </button></a>
+
+</div>
+
+
+{% endblock %}
