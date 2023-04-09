@@ -160,3 +160,11 @@ form .form-control{
 main a button.button_chanel{
     margin-top: 10%;
 }
+
+
+
+main div a button.button{
+    position: relative;
+    margin-left: 4%;
+    right: 2%;
+}

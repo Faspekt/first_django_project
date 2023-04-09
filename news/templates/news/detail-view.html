@@ -12,8 +12,9 @@
     <p>{{ news.full_text }}</p>
 
 
-    <a href="{% url 'news:news_home'%}"> <button class = "button"> Вернуться назад </button></a>
-
+    <a href="{% url 'news:news_update' pk=news.pk%}"> <button class="button"> Обновить</button></a>
+    <a href="{% url 'news:news_delite' pk=news.pk%}"> <button class="button">Удалить</button></a> <br>
+    <a href="{% url 'news:news_home'%}"> <button class = "button"> Вернуться назад </button></a> 
 </div>
 
 
