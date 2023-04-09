@@ -1,0 +1,27 @@
+{% extends "main/layout.html" %}
+
+
+{% block title %}{{ news }}{% endblock %}
+
+
+{% block content %}
+
+<div class="features">
+    <h1>{{ news }}</h1>
+    <p>Здесь новости</p>
+
+    {% for el in all_news %}
+        <div class="news_text">
+            <blockquote class="alert">
+                <h3>{{ el.name_news }}</h3>
+                <p>{{ el.anons }}</p>
+            </blockquote>
+        </div>
+    {% endfor %}
+
+    <button class = "button"> я не читаю новости </button>
+
+</div>
+
+
+{% endblock %}

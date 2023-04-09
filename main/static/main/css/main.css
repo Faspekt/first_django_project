@@ -1,0 +1,156 @@
+body{
+    background: #2c2c2c;
+}
+
+aside{
+    float: left;
+    background: darkcyan;
+    width: 20%;
+    padding: 2.5%;
+    height: 100vh;
+    color: floralwhite;
+    border-right: 5%, solid, black;
+    
+}
+
+aside img{
+    width: 80px;
+    border-radius: 100px;
+    float: left;
+}
+
+
+aside .logo{
+    font-size: 40px;
+    margin-left: 10px;
+    font-weight: bold;
+    position: relative;
+    color: darkgrey;
+    top: 10px;
+    
+}
+
+
+aside h3{
+    margin-top: 50px;
+    font-size: 30px;
+    color: darkgrey;
+}
+
+
+aside ul{list-style: none;}
+
+aside ul li{
+    color: darkgrey;
+    display: block;
+    margin-top: 20px;
+    transition: transform .1s ease;
+    
+    
+    
+    
+}
+
+
+
+aside ul li:hover, aside ul a:hover{
+    color: cyan;
+    text-decoration: none;
+    transform: scale(1.1);
+
+}
+
+
+
+
+
+main .features{
+    color: rgb(255, 255, 255);
+    float: left;
+    margin-top: 100px;
+    text-align: center;
+    width: 75%;
+    
+}
+
+
+main .features h1 {font-size: 50px;
+    color: #cacaca;
+    
+}
+main .features p {mask-size: 400px;
+    margin: 20px auto;
+    color: #cacaca;
+    
+}
+
+main .features button {
+    text-align: center;
+    color:rgb(210, 255, 247); 
+    background-color: rgb(72, 72, 72);
+    transition: transform .2s ease;
+    border-radius: 20px;
+    border:none;
+    margin-top: 3%;
+}
+
+main .features button:hover{
+    background-color: rgb(0, 191, 191);
+    transform: scale(1.1);
+    color: #2c2c2c;
+} 
+
+
+main .news_text {
+    height: 15%;
+    width: 85%;
+    position: relative;
+    margin-left: 10%;
+    background-color: darkcyan;
+}
+
+main .alert{
+    float: left;
+    clear: both;
+    width:94%;
+    text-align: left;
+    background-color: darkcyan;
+}
+
+
+
+
+main .alert h3{
+    font-size: 21px;
+    
+    height: 100%;
+    line-height: 1.25;
+    padding: 0;
+    text-align: center;
+    
+
+}
+
+main .alert p{
+    text-align: center;
+}
+
+
+
+form{
+    margin-top: 3%;
+    margin-left: 10%;
+    margin-right: 5%;
+    
+}
+
+form .form-control{
+    background-color: #4a4a4a;
+    box-shadow: 0 0 0 1000px #4a4a4a inset !important;
+    outline: none;
+    
+}
+
+
+
+
