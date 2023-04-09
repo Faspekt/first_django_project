@@ -1,0 +1,25 @@
+{% extends "main/layout.html" %}
+
+
+{% block title %}Редактирование новости{% endblock %}
+
+
+{% block content %}
+
+<div class="features">
+    <h1>Редактирование новости</h1>
+
+    <form method="post" autocomplete="off" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        {{ form.name_news }} <br>
+        {{ form.anons }} <br>
+        {{ form.full_text }} <br>
+        {{ form.data_create }} <br>
+        <button class="button" type="submit">Применить изменения</button> <br>
+    </form>
+
+</div>
+
+
+{% endblock %}

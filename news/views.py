@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import News
 from .forms import NewsForm
-from django.views.generic import DetailView
+from django.views.generic import DetailView, UpdateView, DeleteView
 
 
 
@@ -18,6 +18,12 @@ class NewsDetailView(DetailView):
     model = News
     template_name = "news/detail-view.html"
     context_object_name = "news"
+
+
+class NewsUpdate(UpdateView):
+    model = News
+    template_name = "news/update_news.html"
+    form_class = NewsForm
 
 
 
