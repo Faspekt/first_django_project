@@ -1,0 +1,26 @@
+{% extends "main/layout.html" %}
+
+
+{% block title %}Удаление новости{% endblock %}
+
+
+{% block content %}
+
+<div class="features">
+    <h1>Удаление новости</h1>
+    <p>Вы уверены удалить:</p> <br>
+    <p>{{ news.name_news }}</p> <br>
+    <p>{{ news.full_text }}</p>
+
+    <form method="post" autocomplete="off" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+
+        <button class="button_delite" type="submit">Удалить новость</button>
+    </form>
+    <a href="{% url 'news:news-detail-view' pk=news.pk %}"><button class="button_chanel">Вернуться назад</button></a>
+
+</div>
+
+
+{% endblock %}
