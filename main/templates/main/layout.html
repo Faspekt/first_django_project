@@ -26,9 +26,13 @@
             <a href="{% url 'news:news_home' %}"><li><i class="fa-solid fa-magnifying-glass"></i> Новости</li></a>
             <a href="{% url 'main:about' %}"><li><i class="fa-solid fa-address-card"></i> О нас</li></a>
             <a href="{% url 'main:help' %}"><li><i class="fa-solid fa-circle-question"></i> Поддержка</li></a>
-            <a href="{% url 'news:create_news' %}"><li><button class="btn btn-info"><i class="fas fa-plus-circle"></i> Добавить новост</button></li></a>
+            <a href="{% url 'news:create_news' %}"><li><button class="btn btn-info"><i class="fas fa-plus-circle"></i> Добавить новость</button></li></a>
         </ul>
     </aside>
+    <div>
+        <a href="{% url 'user:login' %}" > <button class="button">Войти</button></a>
+        <a href="{% url 'user:register' %}"> <button class="button">Зарегестрироваться</button></a> <br>
+    </div>
     <main>
         {% block content %}
         {% endblock %}

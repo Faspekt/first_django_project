@@ -7,9 +7,16 @@
 {% block content %}
 
 <div class="features">
-    <h1>{{ title }}</h1>
-    <p>Сдесь мы главные</p>
-    <button class = "button"> Нет, я главный </button>
+    {% csrf_token %}
+    {% if user.is_authenticated %}
+        <h1>{{ title }}</h1>
+        <p>Сдесь мы главные</p>
+        <a href="{% url 'user:logout'%}">Выйти</a>
+        <button class = "button"> Нет, я главный </button>
+    {% else %}
+        <h1>Если хотите добавить статью сначала авторизуйтесь!!!</h1>
+        <a href="{% url 'user:login' %}"><button class="button">Войти</button></a>
+    {% endif %}
 
 </div>
 

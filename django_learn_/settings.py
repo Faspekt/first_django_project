@@ -27,18 +27,35 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = "users.User"
+LOGOUT_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/"
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+
+EMAIL_HOST_USER = 'faspektdl@yandex.ru'
+EMAIL_HOST_PASSWORD = 'pztbzurngfnfnogh'
+DEFAULT_FROM_EMAIL = 'faspektdl@yandex.ru'
+
 
 # Application definition
 
 INSTALLED_APPS = [
+    "main",
+    "news",
+    "users",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "main",
-    "news"
 ]
 
 MIDDLEWARE = [

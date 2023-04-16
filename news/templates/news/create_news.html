@@ -7,17 +7,23 @@
 {% block content %}
 
 <div class="features">
-    <h1>{{ create }}</h1>
+    
+    {% csrf_token %}
+    {% if user.is_authenticated %}
 
-    <form method="post" autocomplete="off" enctype="multipart/form-data">
-        {% csrf_token %}
-        
-        {{ form.name_news }} <br>
-        {{ form.anons }} <br>
-        {{ form.full_text }} <br>
-        {{ form.data_create }} <br>
-        <button class="button" type="submit">Добавить статью</button> <br>
-    </form>
+        <form method="post" autocomplete="off" enctype="multipart/form-data">
+                <h1>{{ create }}</h1>
+                {{ form.name_news }} <br>
+                {{ form.anons }} <br>
+                {{ form.full_text }} <br>
+                {{ form.data_create }} <br>
+                <button class="button" type="submit">Добавить статью</button> <br>
+        </form>
+
+    {% else %}
+        <h1>Если хотите добавить статью сначала авторизуйтесь!!!</h1>
+        <a href="{% url 'user:login' %}"><button class="button">Войти</button></a>
+    {% endif %}
 
 </div>
 

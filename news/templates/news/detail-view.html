@@ -7,14 +7,21 @@
 {% block content %}
 
 <div class="features">
+    
     <h1>{{ news.name_news }}</h1>
     <p>{{ news.data_create }}</p>
     <p>{{ news.full_text }}</p>
 
+    {% if user.is_authenticated %}
 
-    <a href="{% url 'news:news_update' pk=news.pk%}"> <button class="button"> Обновить</button></a>
-    <a href="{% url 'news:news_delite' pk=news.pk%}"> <button class="button">Удалить</button></a> <br>
+        <a href="{% url 'news:news_update' pk=news.pk%}"> <button class="btn btn-success"> Обновить</button></a>
+        <a href="{% url 'news:news_delite' pk=news.pk%}"> <button class="btn btn-danger">Удалить</button></a> <br> 
+
+    {% endif %}
+
     <a href="{% url 'news:news_home'%}"> <button class = "button"> Вернуться назад </button></a> 
+
+
 </div>
 
 
