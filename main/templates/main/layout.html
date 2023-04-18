@@ -29,10 +29,6 @@
             <a href="{% url 'news:create_news' %}"><li><button class="btn btn-info"><i class="fas fa-plus-circle"></i> Добавить новость</button></li></a>
         </ul>
     </aside>
-    <div>
-        <a href="{% url 'user:login' %}" > <button class="button">Войти</button></a>
-        <a href="{% url 'user:register' %}"> <button class="button">Зарегестрироваться</button></a> <br>
-    </div>
     <main>
         {% block content %}
         {% endblock %}

@@ -1,24 +1,30 @@
-{% extends "main/layout.html" %}
+{% extends "registration/auth_user.html" %}
 
 
 {% block title %}Войти{% endblock %}
 
 
-{% block content %}
+{% block auth %}
+
+
 
 <div class="features">
     {% if form.errors %}
         <p>{{ form.errors.error }}</p>
     {% endif %}
+    <h1>Вход</h1>
 
-    <form method="post">
+    <form method="post" class="form" autocomplete="off">
         {% csrf_token %}
-        {{form}}
+        {{form.as_p}}
         <button class="button" type="submit">Войти</button> 
     </form> 
-    <a href="{% url 'user:register' %}" ><button class="button">Нету аккаунта? Зарегестрироваться</button></a> <br>
-    <a href="{% url 'user:password_reset' %}"><button class="button">Забыли пароль? Сбросить</button></a>
+    <div class="link_auth">
+        <a href="{% url 'user:register' %}" >Нету аккаунта? Зарегестрироваться</a> <br>
+        <a href="{% url 'user:password_reset' %}">Забыли пароль? Сбросить</a>
+    </div>
 </div>
+
 
 
 {% endblock %}

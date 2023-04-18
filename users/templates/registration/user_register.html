@@ -1,16 +1,17 @@
-{% extends "main/layout.html" %}
+{% extends "registration/auth_user.html" %}
 
 
 {% block title %}Регистрация{% endblock %}
 
 
-{% block content %}
+{% block auth %}
 
 <div class="features">
 
+    <h1>Регистрация</h1>
     <form action="{% url 'user:register'%}" method="post" autocomplete="off" >
         {% csrf_token %}
-        {{ form}} <br>
+        {{ form.as_p}} <br>
         <button class="button" type="submit"> Зарегестрироваться</button>
 
     </form>
