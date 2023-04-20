@@ -8,10 +8,9 @@
 
 <div class="features">
     
-    {% csrf_token %}
     {% if user.is_authenticated %}
 
-        <form method="post" autocomplete="off" enctype="multipart/form-data">
+        <form method="post" autocomplete="off" enctype="multipart/form-data">{% csrf_token %}
                 <h1>{{ create }}</h1>
                 {{ form.name_news }} <br>
                 {{ form.anons }} <br>
