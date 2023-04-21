@@ -17,6 +17,10 @@
     </style>
 </head>
 <body>
+    <form class="search_form" action="{% url 'news:news_home'%}">
+        <input class="input_search" type="search" placeholder="Поиск" aria-label="search" name="search">
+        <button class="button" type="submit">Поиск</button>
+    </form>
     <aside>
         <img src="{% static 'main/image/logo.png' %}" alt="logo">
         <span class="logo"> fAspekta </span>
@@ -29,10 +33,6 @@
             <a href="{% url 'news:create_news' %}"><li><button class="btn btn-info"><i class="fas fa-plus-circle"></i> Добавить новость</button></li></a>
         </ul>
     </aside>
-    <form class="search_form" action="{% url 'news:news_home'%}">
-        <input class="input_search" type="search" placeholder="Поиск" aria-label="search" name="search">
-        <button class="button" type="submit">Поиск</button>
-    </form>
     <main>
         {% block content %}
         {% endblock %}

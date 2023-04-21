@@ -3,6 +3,7 @@ body{
 }
 
 aside{
+    
     float: left;
     background: darkcyan;
     width: 20%;
@@ -187,8 +188,3 @@ main form input{
     outline: none;    
 }
 
-
-main div form button{
-    position: relative;
-    margin-right: 5%;
-}
