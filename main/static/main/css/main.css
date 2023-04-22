@@ -3,15 +3,13 @@ body{
 }
 
 aside{
-    
     float: left;
     background: darkcyan;
     width: 20%;
     padding: 2.5%;
-    height: 100vh;
+    height: 180vh;
     color: floralwhite;
     border-right: 5%, solid, black;
-    
 }
 
 aside img{
@@ -20,24 +18,20 @@ aside img{
     float: left;
 }
 
-
 aside .logo{
     font-size: 40px;
     margin-left: 10px;
     font-weight: bold;
     position: relative;
     color: darkgrey;
-    top: 10px;
-    
+    top: 10px; 
 }
-
 
 aside h3{
     margin-top: 50px;
     font-size: 30px;
     color: darkgrey;
 }
-
 
 aside ul{list-style: none;}
 
@@ -46,24 +40,13 @@ aside ul li{
     display: block;
     margin-top: 20px;
     transition: transform .1s ease;
-    
-    
-    
-    
 }
-
-
 
 aside ul li:hover, aside ul a:hover{
     color: cyan;
     text-decoration: none;
     transform: scale(1.1);
-
 }
-
-
-
-
 
 main .features{
     color: rgb(255, 255, 255);
@@ -71,18 +54,15 @@ main .features{
     margin-top: 100px;
     text-align: center;
     width: 75%;
-    
 }
-
 
 main .features h1 {font-size: 50px;
     color: #cacaca;
-    
 }
+
 main .features p {mask-size: 400px;
     margin: 20px auto;
     color: #cacaca;
-    
 }
 
 .button {
@@ -123,51 +103,37 @@ main .alert{
     background-color: darkcyan;
 }
 
-
-
-
 main .alert h3{
-    font-size: 21px;
-    
+    font-size: 21px;   
     height: 100%;
     line-height: 1.25;
     padding: 0;
     text-align: center;
-    
-
 }
 
 main .alert p{
     text-align: center;
 }
 
-
-
-form{
+main form{
     margin-top: 3%;
     margin-left: 10%;
     margin-right: 5%;
-    
 }
 
-form .form-control{
+main form .form-control{
     background-color: #4a4a4a;
     box-shadow: 0 0 0 1000px #4a4a4a inset !important;
     outline: none;
-    
 }
 
-
-
- form .button_delite{
+main form .button_delite{
     margin-right: 5.6%;
 }
 
 main a button.button_chanel{
     margin-top: 10%;
 }
-
-
 
 main div a button.button{
     position: relative;
@@ -182,9 +148,21 @@ body div  {
     margin-right: 1%;
 }
 
-main form input{
+body form.search_form{
+    position: relative;
+    width: 20%;
+    height: 50px;
+    float: right;
+    margin-right: 2%;
+    margin-top: 1%;
+}
+
+body form.search_form input{
     background-color: #4a4a4a;
     box-shadow: 0 0 0 1000px #4a4a4a inset !important;
-    outline: none;    
+    outline: none;
+    color: white;
+    border-radius: 20px;
+    width: 80%;
 }
 
