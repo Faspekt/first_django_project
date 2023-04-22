@@ -11,7 +11,7 @@ def news_home(request):
     if search_query:
         news = News.objects.filter(Q(name_news__icontains=search_query)| Q(anons__icontains=search_query))
     else:
-        news = News.objects.order_by('-data_create')[:10]
+        news = News.objects.order_by('-data_create')[:5]
 
     data = {
         "news": "Новости",
@@ -46,14 +46,6 @@ def create_news(request):
         "error": "Заполняйте форму правильно!" 
     }
 
-    check_user_news(request)
-        
-    return render(request, "news/create_news.html", data)
-
-
-
-def check_user_news(request):
-
     if request.method == "POST":
         form = NewsForm(request.POST)
         if form.is_valid():
@@ -62,5 +54,7 @@ def check_user_news(request):
         else:
             form = NewsForm()
             return render(request, "news/error_add_news.html", {"form": form})
+        
+    return render(request, "news/create_news.html", data)
 
 
