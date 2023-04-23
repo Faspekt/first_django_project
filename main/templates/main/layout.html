@@ -17,7 +17,7 @@
     </style>
 </head>
 <body>
-    <form class="search_form" action="{% url 'news:news'%}">
+    <form class="search_form" action="{% url 'news:news_home'%}" method="get">
         <input type="search" placeholder="Поиск" aria-label="search" name="search">
         <button class="button" type="submit">Поиск</button>
     </form>
@@ -27,7 +27,7 @@
         <h3>Навигация</h3>
         <ul>
             <a href="{% url 'main:home' %}"><li> <i class="fa-solid fa-house"></i> Главная</li></a>
-            <a href="{% url 'news:news' %}"><li><i class="fa-solid fa-magnifying-glass"></i> Новости</li></a>
+            <a href="{% url 'news:news_home' %}"><li><i class="fa-solid fa-magnifying-glass"></i> Новости</li></a>
             <a href="{% url 'main:about' %}"><li><i class="fa-solid fa-address-card"></i> О нас</li></a>
             <a href="{% url 'main:help' %}"><li><i class="fa-solid fa-circle-question"></i> Поддержка</li></a>
             <a href="{% url 'news:create_news' %}"><li><button class="btn btn-info"><i class="fas fa-plus-circle"></i> Добавить новость</button></li></a>

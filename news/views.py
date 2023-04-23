@@ -62,8 +62,15 @@ def create_news(request):
 class NewsPage(ListView):
     model = News
     paginate_by = 5
-    template_name = "news/news.html"
+    template_name = "news/news_home.html"
     context_object_name = 'news'
-
-    def get_query(self):
-        return News.objects.order_by("-data_create")
+    
+    def get_queryset(self):
+        search_query = self.request.GET.get("search", "")
+        news_list = self.model.objects.all()
+        if search_query:
+            news_list = news_list.filter(Q(name_news__icontains=search_query)| Q(anons__icontains=search_query))
+        else:
+            news_list = news_list.order_by('-id')
+        
+        return news_list
