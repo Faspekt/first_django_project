@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import News
 from .forms import NewsForm
-from django.views.generic import DetailView, UpdateView, DeleteView
+from django.views.generic import DetailView, UpdateView, DeleteView, ListView
 from django.db.models import Q
 
 
@@ -57,3 +57,13 @@ def create_news(request):
         
     return render(request, "news/create_news.html", data)
 
+
+
+class NewsPage(ListView):
+    model = News
+    paginate_by = 5
+    template_name = "news/news.html"
+    context_object_name = 'news'
+
+    def get_query(self):
+        return News.objects.order_by("-data_create")
