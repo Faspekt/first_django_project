@@ -57,4 +57,3 @@ def create_news(request):
         
     return render(request, "news/create_news.html", data)
 
-
