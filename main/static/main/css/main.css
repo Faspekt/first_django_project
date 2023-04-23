@@ -56,8 +56,10 @@ main .features{
     width: 75%;
 }
 
-main .features h1 {font-size: 50px;
+main .features h1 {
+    font-size: 50px;
     color: #cacaca;
+    margin-bottom: 5%;
 }
 
 main .features p {mask-size: 400px;

@@ -1,13 +1,14 @@
 {% extends "main/layout.html" %}
 
 
-{% block title %}{{ news }}{% endblock %}
+{% block title %}Новости{% endblock %}
 
 
 {% block content %}
 
-
 <div class="features">
+    <h1>Новости</h1>
+    
     {% for el in page_obj %}
         <div class="news_text">
             <blockquote class="alert">
@@ -28,7 +29,7 @@
 
                 {% if num_page == page_obj.number %}
                     <a href="?page={{num_page}}" ><button class="page_num_disabled">{{ num_page }}</button></a>
-                    
+
                 {% elif num_page >= page_obj.number|add:-5 and num_page <= page_obj.number|add:5 %}
                     <a href="?page={{num_page}}" ><button class="page_num">{{ num_page }}</button></a>
 
