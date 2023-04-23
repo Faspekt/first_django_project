@@ -3,13 +3,16 @@ body{
 }
 
 aside{
+    position: fixed;
     float: left;
     background: darkcyan;
     width: 20%;
     padding: 2.5%;
-    height: 180vh;
+    height: 100vh;
     color: floralwhite;
     border-right: 5%, solid, black;
+    z-index:1;
+    border: 1px solid black;
 }
 
 aside img{
@@ -54,6 +57,7 @@ main .features{
     margin-top: 100px;
     text-align: center;
     width: 75%;
+    margin-left: 20%;
 }
 
 main .features h1 {
@@ -88,7 +92,7 @@ main .news_text {
     height: 15%;
     width: 85%;
     position: relative;
-    margin-left: 10%;
+    margin-right: 10%;
     background-color: darkcyan;
 }
 
