@@ -23,7 +23,9 @@
         {% endif %}
 
         {% for num_page in page_obj.paginator.page_range %}
-            {% if num_page >= page_obj.number|add:-5 and num_page <= page_obj.number|add:5 %}
+            {% if num_page == 1 %}
+                
+            {% elif num_page >= page_obj.number|add:-5 and num_page <= page_obj.number|add:5 %}
                 <a href="?page={{num_page}}" class="num_page" class="page_num">{{ num_page }}</a>
             {% endif %}
         {% endfor %}
