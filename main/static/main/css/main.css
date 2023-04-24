@@ -10,7 +10,6 @@ aside{
     padding: 2.5%;
     height: 100vh;
     color: floralwhite;
-    border-right: 5%, solid, black;
     z-index:1;
     border: 1px solid black;
 }
@@ -65,11 +64,23 @@ main .features h1 {
     font-size: 50px;
     color: #cacaca;
     margin-bottom: 5%;
+    margin-left: 4%;
 }
 
-main .features p {mask-size: 400px;
+main div.features p {mask-size: 400px;
     margin: 20px auto;
     color: #cacaca;
+    margin-left: 4%;
+}
+
+main div.features div.up_del_news_btn{
+    position: relative;
+    width: 100%;
+}
+
+main div.features div.up_del_news_btn a{
+    position: relative;
+    margin-left: 5%;
 }
 
 .button {
@@ -99,13 +110,14 @@ main .news_text {
 
 main div div.news_text{
     margin-right: 5%;
+    border: 1px solid black;
 }
 
 
 main .alert{
     float: left;
     clear: both;
-    width:94%;
+    width:100%;
     text-align: left;
     background-color: darkcyan;
 }
@@ -120,6 +132,7 @@ main .alert h3{
 
 main .alert p{
     text-align: center;
+    width: 92%;
 }
 
 main form{
@@ -196,6 +209,7 @@ main div.page_num a button.page_num{
     background-color: aquamarine;
     border-radius: 20px;
 
+
 }
 
 main div.page_num a button.page_num_disabled{
@@ -205,4 +219,11 @@ main div.page_num a button.page_num_disabled{
     background-color: darkcyan;
     border-radius: 20px;
 
+}
+
+
+main div.features p.author{
+    text-align: right;
+    position: relative;
+    margin-right: 3%;
 }

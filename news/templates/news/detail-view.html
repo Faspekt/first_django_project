@@ -11,15 +11,18 @@
     <h1>{{ news.name_news }}</h1>
     <p>{{ news.data_create }}</p>
     <p>{{ news.full_text }}</p>
+    <p class="author">Автор: {{ news.author }}</p> <br>
 
-    {% if user.is_authenticated %}
+    <div class="up_del_news_btn">
+        {% if user.is_authenticated %}
 
-        <a href="{% url 'news:news_update' pk=news.pk%}"> <button class="btn btn-success"> Обновить</button></a>
-        <a href="{% url 'news:news_delite' pk=news.pk%}"> <button class="btn btn-danger">Удалить</button></a> <br> 
+            <a href="{% url 'news:news_update' pk=news.pk%}"> <button class="btn btn-success"> Обновить</button></a>
+            <a href="{% url 'news:news_delite' pk=news.pk%}"> <button class="btn btn-danger">Удалить</button></a> <br> 
 
-    {% endif %}
+        {% endif %}
 
-    <a href="{% url 'news:news_home'%}"> <button class = "button"> Вернуться назад </button></a> 
+        <a href="{% url 'news:news_home'%}"> <button class = "button"> Вернуться назад </button></a>
+    </div> 
 
 
 </div>

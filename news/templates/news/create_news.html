@@ -19,7 +19,7 @@
                 {{ form.author_id }}
                 <button class="button" type="submit">Добавить статью</button> <br>
         </form>
-
+        
     {% else %}
         <h1>Если хотите добавить статью сначала авторизуйтесь!!!</h1>
         <a href="{% url 'user:login' %}"><button class="button">Войти</button></a>
