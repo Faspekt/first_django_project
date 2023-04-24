@@ -3,21 +3,8 @@ from .models import News
 from .forms import NewsForm
 from django.views.generic import DetailView, UpdateView, DeleteView, ListView
 from django.db.models import Q
+from users.models import User
 
-
-def news_home(request):
-    search_query = request.GET.get("search", "")
-
-    if search_query:
-        news = News.objects.filter(Q(name_news__icontains=search_query)| Q(anons__icontains=search_query))
-    else:
-        news = News.objects.order_by('-data_create')[:5]
-
-    data = {
-        "news": "Новости",
-        "all_news": news
-    }
-    return render(request, "news/news_home.html", data)
 
 
 class NewsDetailView(DetailView):
@@ -43,20 +30,34 @@ def create_news(request):
     data = {
         "create": "Расскажите о новости",
         "form": form,
-        "error": "Заполняйте форму правильно!" 
+        "error": "Заполняйте форму правильно!",
+
     }
 
     if request.method == "POST":
         form = NewsForm(request.POST)
+        
         if form.is_valid():
-            form.save()
+
+            name_news = form.cleaned_data["name_news"]
+            anons = form.cleaned_data["anons"]
+            full_text = form.cleaned_data["full_text"]
+            data_create = form.cleaned_data["data_create"]
+            author = request.user.id
+
+            News.objects.create(
+                name_news = name_news,
+                anons = anons,
+                full_text = full_text,
+                data_create = data_create,
+                author_id = author
+            )
             return redirect("main:home")
         else:
             form = NewsForm()
             return render(request, "news/error_add_news.html", {"form": form})
         
     return render(request, "news/create_news.html", data)
-
 
 
 class NewsPage(ListView):

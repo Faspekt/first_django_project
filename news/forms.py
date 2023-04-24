@@ -1,13 +1,11 @@
 from .models import News
-from django.forms import ModelForm, TextInput, Textarea, DateTimeInput
-from django.utils import timezone
+from django.forms import ModelForm, TextInput, Textarea, DateTimeInput, NumberInput
 
 
 class NewsForm(ModelForm):
     class Meta:
           model = News
-          fields = ["name_news", "anons", "full_text", "data_create"]
-
+          fields = ["name_news", "anons", "full_text", "data_create", "author"]
 
           widgets = {
                "name_news": TextInput(attrs={
@@ -25,6 +23,10 @@ class NewsForm(ModelForm):
                "data_create": DateTimeInput(attrs={
                     "class": "form-control",
                     "type": "hidden"
+          }),
+               "author_id": NumberInput(attrs={
+                    "class": "form-comtrol",
+                    "type": "hidden",
                })
         }
 
