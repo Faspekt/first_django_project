@@ -1,10 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from .models import News
 from .forms import NewsForm
 from django.views.generic import DetailView, UpdateView, DeleteView, ListView
 from django.db.models import Q
-from users.models import User
-
+from .services import AddNewsBD
 
 
 class NewsDetailView(DetailView):
@@ -25,40 +24,18 @@ class NewsDelite(DeleteView):
     success_url = "/news"
 
 
-def create_news(request):
-    form = NewsForm()
-    data = {
-        "create": "Расскажите о новости",
-        "form": form,
-        "error": "Заполняйте форму правильно!",
-
-    }
-
-    if request.method == "POST":
-        form = NewsForm(request.POST)
-        
-        if form.is_valid():
-
-            name_news = form.cleaned_data["name_news"]
-            anons = form.cleaned_data["anons"]
-            full_text = form.cleaned_data["full_text"]
-            data_create = form.cleaned_data["data_create"]
-            author = request.user.id
-
-            News.objects.create(
-                name_news = name_news,
-                anons = anons,
-                full_text = full_text,
-                data_create = data_create,
-                author_id = author
-            )
-            return redirect("main:home")
-        else:
-            form = NewsForm()
-            return render(request, "news/error_add_news.html", {"form": form})
-        
-    return render(request, "news/create_news.html", data)
-
+class CreateNews(AddNewsBD):
+    def get(self, request):
+        context = {
+            "create": "Расскажите о новости",
+            "form": NewsForm(),
+            "error": "Заполняйте форму правильно!",
+        }
+        return render(request, self.template_name, context)
+    
+    def post(self, request):
+        return super().add_news_to_db(request)
+    
 
 class NewsPage(ListView):
     model = News
