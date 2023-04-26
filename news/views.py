@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import News
 from .forms import NewsForm
 from django.views.generic import DetailView, UpdateView, DeleteView, ListView
@@ -7,6 +7,8 @@ from .services import AddNewsBD
 
 
 class NewsDetailView(DetailView):
+    
+
     model = News
     template_name = "news/detail-view.html"
     context_object_name = "news"
@@ -17,6 +19,22 @@ class NewsUpdate(UpdateView):
     template_name = "news/update_news.html"
     form_class = NewsForm
 
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+
+        if form.is_valid():
+            news = form.save(commit=False)
+            news.author = request.user
+            news.published_date = form.cleaned_data["data_create"]
+            news.save()
+            return redirect(news.get_absolute_url())
+        else:
+            print(form.errors)
+        context = {
+            'form': form,
+        }
+        return render(request, self.template_name, context)
+    
 
 class NewsDelite(DeleteView):
     model = News

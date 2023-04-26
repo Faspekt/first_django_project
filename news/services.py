@@ -3,9 +3,15 @@ from .models import News
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from django.urls import reverse_lazy
+from django.shortcuts import render
+
+
+
 
 
 class AddNewsBD(View):
+
+
     def __init__(self, model=News, template_name="news/create_news.html", succes_url=reverse_lazy("news:news_home")) -> None:
         self.model = model
         self.template_name = template_name
@@ -38,3 +44,4 @@ class AddNewsBD(View):
         }
 
         return render(request, self.template_name, context)
+    

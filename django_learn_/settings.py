@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv
 from os import getenv
+from .json_format import CustomJsonFormatter
 
 
 load_dotenv()
@@ -28,6 +29,7 @@ SECRET_KEY = getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
 
 ALLOWED_HOSTS = []
 
@@ -151,3 +153,41 @@ STATIC_DIRS = [
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": True,
+
+    "formatters": {
+        "main_format": {
+            "format": "[{asctime} {levelname} {module}] {message}",
+            "style": "{",
+        },
+        "json_format": {
+            "()": CustomJsonFormatter,
+        },
+    },
+
+    "handlers": {
+        "console": {
+            'level': 'INFO',
+            "class": "logging.StreamHandler",
+            "formatter": "main_format",
+        },
+    
+        "file": {
+            "class": "logging.FileHandler",
+            "formatter": "json_format",
+            "filename": getenv("FILENAME_LOG"),
+        },
+
+    },
+
+    "loggers": {
+        "django.db.backends": {
+            'level': 'DEBUG',
+            "handlers": ["file", "console"],
+            "propagate": False,
+        },
+    }
+}
