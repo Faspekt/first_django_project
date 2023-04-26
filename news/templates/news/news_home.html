@@ -14,8 +14,8 @@
             <blockquote class="alert">
                 <h3>{{ el.name_news }}</h3>
                 <p>{{ el.anons }}</p>
-                <p class="author">Автор: {{ el.author }}</p>
-                <a href="{% url 'news:news-detail-view' el.id %}"> <button class="button">Читать</button></a>
+                <p class="author">Автор: {{ author }}</p>
+                <a href="{% url 'news:news-detail-view' el.id%}"> <button class="button">Читать</button></a>
             </blockquote>
         </div>
     {% endfor %}

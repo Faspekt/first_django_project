@@ -64,9 +64,11 @@ class NewsPage(ListView):
     def get_queryset(self):
         search_query = self.request.GET.get("search", "")
         news_list = self.model.objects.all()
+
         if search_query:
-            news_list = news_list.filter(Q(name_news__icontains=search_query)| Q(anons__icontains=search_query))
-        else:
-            news_list = news_list.order_by('-id')
+            news_list = news_list.values("id", "name_news", "anons", "author").filter(Q(name_news__icontains=search_query)| Q(anons__icontains=search_query))
         
+        else:
+            news_list = news_list.values("id","name_news", "anons", "author").order_by('-id')
+
         return news_list
