@@ -1,30 +1,30 @@
 {% extends "main/layout.html" %}
 
 
-{% block title %}{{ news.name_news }}{% endblock %}
+{% block title %}{{ name_news }}{% endblock %}
 
 
 {% block content %}
 
+
 <div class="features">
+    {% for news in news %}
+        <h1>{{ news.name_news }}</h1>
+        <p>{{ news.data_create }}</p>
+        <p>{{ news.full_text }}</p>
+        <p class="author">Автор: {{ news.author__username }}</p> <br>
+        
+        <div class="up_del_news_btn">   
+            {% if user.is_authenticated %}
+
+                <a href="{% url 'news:news_update' pk=news.id %}"> <button class="btn btn-success"> Обновить</button></a>
+                <a href="{% url 'news:news_delite' pk=news.id %}"> <button class="btn btn-danger">Удалить</button></a> <br> 
+
+            {% endif %}
+    {% endfor %}
+            <a href="{% url 'news:news_home'%}"> <button class = "button"> Вернуться назад </button></a>
+        </div> 
     
-    <h1>{{ news.name_news }}</h1>
-    <p>{{ news.data_create }}</p>
-    <p>{{ news.full_text }}</p>
-    <p class="author">Автор: {{ news.author }}</p> <br>
-
-    <div class="up_del_news_btn">
-        {% if user.is_authenticated %}
-
-            <a href="{% url 'news:news_update' pk=news.pk%}"> <button class="btn btn-success"> Обновить</button></a>
-            <a href="{% url 'news:news_delite' pk=news.pk%}"> <button class="btn btn-danger">Удалить</button></a> <br> 
-
-        {% endif %}
-
-        <a href="{% url 'news:news_home'%}"> <button class = "button"> Вернуться назад </button></a>
-    </div> 
-
-
 </div>
 
 

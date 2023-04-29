@@ -7,11 +7,27 @@ from .services import AddNewsBD
 
 
 class NewsDetailView(DetailView):
-    
-
     model = News
     template_name = "news/detail-view.html"
-    context_object_name = "news"
+    context_object_name = "news_detal"
+
+    def get_queryset(self):
+        pk = self.kwargs.get("pk")
+        news = News.objects.filter(pk=pk).values(
+            "id",
+            "name_news",
+            "data_create",
+            "full_text",
+            "author__username",
+        )
+
+        return news
+
+    def get(self, request, *agrs, **kwargs):
+        news = self.get_queryset()
+        context = {"news": news}
+
+        return render(self.request, self.template_name, context)
 
 
 class NewsUpdate(UpdateView):
@@ -21,20 +37,24 @@ class NewsUpdate(UpdateView):
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
+        user = self.request.session.get("user", None)
 
         if form.is_valid():
+
             news = form.save(commit=False)
-            news.author = request.user
+            news.author_id = user.get("id")
             news.published_date = form.cleaned_data["data_create"]
             news.save()
+
             return redirect(news.get_absolute_url())
         else:
             print(form.errors)
+
         context = {
-            'form': form,
+            "form": form,
         }
         return render(request, self.template_name, context)
-    
+
 
 class NewsDelite(DeleteView):
     model = News
@@ -44,31 +64,47 @@ class NewsDelite(DeleteView):
 
 class CreateNews(AddNewsBD):
     def get(self, request):
+
         context = {
             "create": "Расскажите о новости",
             "form": NewsForm(),
             "error": "Заполняйте форму правильно!",
         }
         return render(request, self.template_name, context)
-    
+
     def post(self, request):
-        return super().add_news_to_db(request)
-    
+        last_operation_time = self.request.session.get("last_operation_time", None)
+
+        return super().add_news_to_db(request, last_operation_time)
+
 
 class NewsPage(ListView):
     model = News
     paginate_by = 5
     template_name = "news/news_home.html"
-    context_object_name = 'news'
-    
+    context_object_name = "news"
+
     def get_queryset(self):
         search_query = self.request.GET.get("search", "")
         news_list = self.model.objects.all()
 
         if search_query:
-            news_list = news_list.values("id", "name_news", "anons", "author").filter(Q(name_news__icontains=search_query)| Q(anons__icontains=search_query))
-        
+
+            news_list = news_list.values(
+                "id",
+                "name_news",
+                "anons",
+                "author__username",
+            ).filter(
+                Q(name_news__icontains=search_query) | Q(anons__icontains=search_query)
+            )
+
         else:
-            news_list = news_list.values("id","name_news", "anons", "author").order_by('-id')
+            news_list = news_list.values(
+                "id",
+                "name_news",
+                "anons",
+                "author__username",
+            ).order_by("-id")
 
         return news_list

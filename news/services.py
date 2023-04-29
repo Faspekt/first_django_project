@@ -1,47 +1,39 @@
+from time import time
+
+
 from .forms import NewsForm
 from .models import News
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.views.generic import View
 from django.urls import reverse_lazy
-from django.shortcuts import render
-
-
-
 
 
 class AddNewsBD(View):
+    model = News
+    template_name = "news/create_news.html"
+    succes_url = reverse_lazy("news:news_home")
 
-
-    def __init__(self, model=News, template_name="news/create_news.html", succes_url=reverse_lazy("news:news_home")) -> None:
-        self.model = model
-        self.template_name = template_name
-        self.succes_url = succes_url
-        
-
-    def add_news_to_db(self, request):
+    def add_news_to_db(self, request, time_operation):
         form = NewsForm(request.POST)
+        user = self.request.session.get("user")
+        time_now = time()
 
-        if form.is_valid():
-            name_news = form.cleaned_data["name_news"]
-            anons = form.cleaned_data["anons"]
-            full_text = form.cleaned_data["full_text"]
-            data_create = form.cleaned_data["data_create"]
-            author = self.request.user.id
+        if time_operation is None or time_now - time_operation > 60:
+            if form.is_valid():
+                name_news = form.cleaned_data["name_news"]
+                anons = form.cleaned_data["anons"]
+                full_text = form.cleaned_data["full_text"]
+                data_create = form.cleaned_data["data_create"]
+                author = user.get("id")
 
-            News.objects.create(
-                name_news = name_news,
-                anons = anons,
-                full_text = full_text,
-                data_create = data_create,
-                author_id = author
-            )
-            return redirect(self.succes_url)
-        
-        context = {
-            "create": "Расскажите о новости",
-            "form": form,
-            "error": "Заполняйте форму правильно!",
-        }
-
-        return render(request, self.template_name, context)
-    
+                News.objects.create(
+                    name_news=name_news,
+                    anons=anons,
+                    full_text=full_text,
+                    data_create=data_create,
+                    author_id=author,
+                )
+                self.request.session["last_operation_time"] = time_now
+                return redirect(self.succes_url)
+        else:
+            return redirect("main:home")
