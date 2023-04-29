@@ -37,7 +37,7 @@ AUTH_USER_MODEL = "users.User"
 LOGOUT_REDIRECT_URL = "/"
 LOGIN_REDIRECT_URL = "/"
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 
 EMAIL_HOST = getenv("EMAIL_HOST")
@@ -45,9 +45,9 @@ EMAIL_PORT = getenv("EMAIL_PORT")
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 
-EMAIL_HOST_USER = getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = getenv('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = getenv('DEFAULT_FROM_EMAIL')
+EMAIL_HOST_USER = getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = getenv("EMAIL_HOST_PASSWORD")
+DEFAULT_FROM_EMAIL = getenv("DEFAULT_FROM_EMAIL")
 
 
 # Application definition
@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "debug_toolbar",
 ]
 
 MIDDLEWARE = [
@@ -72,6 +73,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = "django_learn_.urls"
@@ -100,12 +102,12 @@ WSGI_APPLICATION = "django_learn_.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": getenv('ENGINE_DB'),
-        "NAME": getenv('NAME_DB'),
-        "USER": getenv('USER_DB'),
-        "PASSWORD": getenv('PASSWORD_DB'),
-        "HOST": getenv('HOST_DB'),
-        "PORT": getenv('PORT_DB'),
+        "ENGINE": getenv("ENGINE_DB"),
+        "NAME": getenv("NAME_DB"),
+        "USER": getenv("USER_DB"),
+        "PASSWORD": getenv("PASSWORD_DB"),
+        "HOST": getenv("HOST_DB"),
+        "PORT": getenv("PORT_DB"),
     }
 }
 
@@ -145,9 +147,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
-STATIC_DIRS = [
-    BASE_DIR / "static"
-]
+STATIC_DIRS = [BASE_DIR / "static"]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -157,7 +157,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": True,
-
     "formatters": {
         "main_format": {
             "format": "[{asctime} {levelname} {module}] {message}",
@@ -167,27 +166,25 @@ LOGGING = {
             "()": CustomJsonFormatter,
         },
     },
-
     "handlers": {
         "console": {
-            'level': 'INFO',
+            "level": "INFO",
             "class": "logging.StreamHandler",
             "formatter": "main_format",
         },
-    
         "file": {
             "class": "logging.FileHandler",
             "formatter": "json_format",
             "filename": getenv("FILENAME_LOG"),
         },
-
     },
-
     "loggers": {
         "django.db.backends": {
-            'level': 'DEBUG',
+            "level": "INFO",
             "handlers": ["file", "console"],
             "propagate": False,
         },
-    }
+    },
 }
+
+INTERNAL_IPS = [getenv("INTERNAL_IPS")]
