@@ -2,6 +2,8 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.vscode
+*.flake8
 
 # C extensions
 *.so
