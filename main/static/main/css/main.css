@@ -227,3 +227,32 @@ main div.features p.author{
     position: relative;
     margin-right: 3%;
 }
+
+.personal_office {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 10px;
+}
+
+
+.user_avatar_deafult {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.login_personal_office {
+    margin-left: 10px;
+    color: aquamarine;
+    font-size: 110%;
+    transition: transform .1s ease;
+}
+
+.login_personal_office:hover {
+    margin-left: 10px;
+    color: darkcyan;
+    font-size: 110%;
+    transform: scale(1.1);
+}

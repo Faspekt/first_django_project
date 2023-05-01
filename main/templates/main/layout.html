@@ -17,10 +17,15 @@
     </style>
 </head>
 <body>
-    <form class="search_form" action="{% url 'news:news_home'%}" method="get">
-        <input type="search" placeholder="Поиск" aria-label="search" name="search">
-        <button class="button" type="submit">Поиск</button>
-    </form>
+    <div class="personal_office">
+        {% if user.is_authenticated %}
+            <img src="{% static 'main/image/avatar-default-icon.png'%}" alt="user_avatar" class="user_avatar_deafult">
+            <a href="{% url 'user:login' %}" class="login_personal_office">Личный кабинет</a>
+        {% else %}
+            <img src="{% static 'main/image/avatar-default-icon.png'%}" alt="user_avatar" class="user_avatar_deafult">
+            <a href="{% url 'user:login' %}" class="login_personal_office">Войти</a>
+        {% endif %}
+    </div>
     <aside>
         <img src="{% static 'main/image/logo.png' %}" alt="logo">
         <span class="logo"> fAspekta </span>

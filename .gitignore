@@ -4,7 +4,7 @@ __pycache__/
 *$py.class
 *.vscode
 *.flake8
-
+*.htaccess
 # C extensions
 *.so
 

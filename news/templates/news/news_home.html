@@ -6,6 +6,11 @@
 
 {% block content %}
 
+<form class="search_form" action="{% url 'news:news_home'%}" method="get">
+    <input type="search" placeholder="Поиск" aria-label="search" name="search">
+    <button class="button" type="submit">Поиск</button>
+</form>
+
 <div class="features">
     <h1>Новости</h1>
     
