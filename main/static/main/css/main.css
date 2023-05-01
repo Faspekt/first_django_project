@@ -1,8 +1,8 @@
-body{
-    background: #2c2c2c;
+body {
+    background: #2c2c2c !important;
 }
 
-aside{
+aside {
     position: fixed;
     float: left;
     background: darkcyan;
@@ -10,47 +10,50 @@ aside{
     padding: 2.5%;
     height: 100vh;
     color: floralwhite;
-    z-index:1;
+    z-index: 1;
     border: 1px solid black;
 }
 
-aside img{
+aside img {
     width: 80px;
     border-radius: 100px;
     float: left;
 }
 
-aside .logo{
+aside .logo {
     font-size: 40px;
     margin-left: 10px;
     font-weight: bold;
     position: relative;
     color: darkgrey;
-    top: 10px; 
+    top: 10px;
 }
 
-aside h3{
+aside h3 {
     margin-top: 50px;
     font-size: 30px;
     color: darkgrey;
 }
 
-aside ul{list-style: none;}
+aside ul {
+    list-style: none;
+}
 
-aside ul li{
+aside ul li {
     color: darkgrey;
     display: block;
     margin-top: 20px;
-    transition: transform .1s ease;
+    transition: transform 0.1s ease;
 }
 
-aside ul li:hover, aside ul a:hover{
+aside ul li:hover,
+aside ul a:hover {
     color: cyan;
     text-decoration: none;
     transform: scale(1.1);
 }
 
-main .features{
+main .features {
     color: rgb(255, 255, 255);
     float: left;
     margin-top: 100px;
@@ -67,38 +70,38 @@ main .features h1 {
     margin-left: 4%;
 }
 
-main div.features p {mask-size: 400px;
+main div.features p {
+    mask-size: 400px;
     margin: 20px auto;
     color: #cacaca;
     margin-left: 4%;
 }
 
-main div.features div.up_del_news_btn{
+main div.features div.up_del_news_btn {
     position: relative;
     width: 100%;
 }
 
-main div.features div.up_del_news_btn a{
+main div.features div.up_del_news_btn a {
     position: relative;
     margin-left: 5%;
 }
 
 .button {
     text-align: center;
-    color:rgb(210, 255, 247); 
+    color: rgb(210, 255, 247);
     background-color: rgb(72, 72, 72);
-    transition: transform .2s ease;
+    transition: transform 0.2s ease;
     border-radius: 20px;
-    border:none;
+    border: none;
     margin-top: 3%;
 }
 
-.button:hover{
+.button:hover {
     background-color: rgb(0, 191, 191);
     transform: scale(1.1);
     color: #2c2c2c;
-} 
-
+}
 
 main .news_text {
     height: 15%;
@@ -108,67 +111,66 @@ main .news_text {
     background-color: darkcyan;
 }
 
-main div div.news_text{
+main div div.news_text {
     margin-right: 5%;
     border: 1px solid black;
 }
 
-
-main .alert{
+main .alert {
     float: left;
     clear: both;
-    width:100%;
+    width: 100%;
     text-align: left;
     background-color: darkcyan;
 }
 
-main .alert h3{
-    font-size: 21px;   
+main .alert h3 {
+    font-size: 21px;
     height: 100%;
     line-height: 1.25;
     padding: 0;
     text-align: center;
 }
 
-main .alert p{
+main .alert p {
     text-align: center;
     width: 92%;
 }
 
-main form{
+main form {
     margin-top: 3%;
     margin-left: 10%;
     margin-right: 5%;
 }
 
-main form .form-control{
+main form .form-control {
     background-color: #4a4a4a;
     box-shadow: 0 0 0 1000px #4a4a4a inset !important;
     outline: none;
 }
 
-main form .button_delite{
+main form .button_delite {
     margin-right: 5.6%;
 }
 
-main a button.button_chanel{
+main a button.button_chanel {
     margin-top: 10%;
 }
 
-main div a button.button{
+main div a button.button {
     position: relative;
     margin-left: 4%;
     right: 2%;
 }
 
-body div  {
+body div {
     float: right;
     position: relative;
     margin-top: 1%;
     margin-right: 1%;
 }
 
-body form.search_form{
+body form.search_form {
     position: relative;
     width: 20%;
     height: 50px;
@@ -177,7 +179,7 @@ body form.search_form{
     margin-top: 1%;
 }
 
-body form.search_form input{
+body form.search_form input {
     background-color: #4a4a4a;
     box-shadow: 0 0 0 1000px #4a4a4a inset !important;
     outline: none;
@@ -186,8 +188,7 @@ body form.search_form input{
     width: 80%;
 }
 
-
-main div.page_num{
+main div.page_num {
     position: relative;
     width: 100%;
     height: 5%;
@@ -202,27 +203,23 @@ main div.page_num a button.page_move {
     border-radius: 20px;
 }
 
-main div.page_num a button.page_num{
+main div.page_num a button.page_num {
     position: relative;
     height: 30px;
     width: 30px;
     background-color: aquamarine;
     border-radius: 20px;
-
-
 }
 
-main div.page_num a button.page_num_disabled{
+main div.page_num a button.page_num_disabled {
     position: relative;
     height: 30px;
     width: 30px;
     background-color: darkcyan;
     border-radius: 20px;
-
 }
 
-
-main div.features p.author{
+main div.features p.author {
     text-align: right;
     position: relative;
     margin-right: 3%;
@@ -235,7 +232,6 @@ main div.features p.author{
     margin: 10px;
 }
 
-
 .user_avatar_deafult {
     width: 40px;
     height: 40px;
@@ -247,7 +243,7 @@ main div.features p.author{
     margin-left: 10px;
     color: aquamarine;
     font-size: 110%;
-    transition: transform .1s ease;
+    transition: transform 0.1s ease;
 }
 
 .login_personal_office:hover {

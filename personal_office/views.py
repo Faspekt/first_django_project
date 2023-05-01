@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from django.views.generic import ListView
 from news.models import News
+from .services import StatistiNews
 
 
 class PersonalOfficePage(ListView):
@@ -26,3 +27,13 @@ class HistoryNewsPage(ListView):
         user_uploaded_news = self.model.objects.filter(author_id=user.get("id")).values("id", "name_news", "anons")
 
         return user_uploaded_news
+
+
+class StatisticNewsPage(StatistiNews):
+    model = News
+    template_name = "personal_office/statistic_news.html"
+
+    def get(self, request, pk):
+        coutn_news = super().count_news_from_user(self.model, pk)
+
+        return render(request, self.template_name, context={"coutn_news": coutn_news})
