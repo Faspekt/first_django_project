@@ -6,9 +6,10 @@ from .models import News
 from django.shortcuts import redirect
 from django.views.generic import View
 from django.urls import reverse_lazy
+from django.db.models import F
 
 
-class AddNewsBD(View):
+class NewsBD(View):
     model = News
     template_name = "news/create_news.html"
     succes_url = reverse_lazy("news:news_home")
@@ -37,3 +38,8 @@ class AddNewsBD(View):
                 return redirect(self.succes_url)
         else:
             return redirect("main:home")
+
+    def update_views(self, request, model, news_id):
+        model.objects.filter(id=news_id).update(views=F("views") + 1)
+
+        return redirect(self.succes_url)

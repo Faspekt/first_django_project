@@ -13,6 +13,7 @@
         <p>{{ news.data_create }}</p>
         <p>{{ news.full_text }}</p>
         <p class="author">Автор: {{ news.author__username }}</p> <br>
+        <p>Просмотров: {{news.views }}</p>
         
         <div class="up_del_news_btn">   
             {% if user.is_authenticated %}
@@ -21,9 +22,13 @@
                 <a href="{% url 'news:news_delite' pk=news.id %}"> <button class="btn btn-danger">Удалить</button></a> <br> 
 
             {% endif %}
-    {% endfor %}
-            <a href="{% url 'news:news_home'%}"> <button class = "button"> Вернуться назад </button></a>
+        <form  method="post" action="{% url 'news:news_home' %}">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{news.id}}">
+            <button class = "button" type="submit"> Вернуться назад </button></a>
+        </form>
         </div> 
+    {% endfor %}
     
 </div>
 

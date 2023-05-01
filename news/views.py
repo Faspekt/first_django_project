@@ -3,7 +3,7 @@ from .models import News
 from .forms import NewsForm
 from django.views.generic import DetailView, UpdateView, DeleteView, ListView
 from django.db.models import Q
-from .services import AddNewsBD
+from .services import NewsBD
 
 
 class NewsDetailView(DetailView):
@@ -18,6 +18,7 @@ class NewsDetailView(DetailView):
             "name_news",
             "data_create",
             "full_text",
+            "views",
             "author__username",
         )
 
@@ -30,7 +31,7 @@ class NewsDetailView(DetailView):
         return render(self.request, self.template_name, context)
 
 
-class NewsUpdate(UpdateView):
+class NewsUpdatePage(UpdateView):
     model = News
     template_name = "news/update_news.html"
     form_class = NewsForm
@@ -46,7 +47,7 @@ class NewsUpdate(UpdateView):
             news.published_date = form.cleaned_data["data_create"]
             news.save()
 
-            return redirect(news.get_absolute_url())
+            return redirect("news:news_home")
         else:
             print(form.errors)
 
@@ -62,7 +63,7 @@ class NewsDelite(DeleteView):
     success_url = "/news"
 
 
-class CreateNews(AddNewsBD):
+class CreateNews(NewsBD):
     def get(self, request):
 
         context = {
@@ -78,7 +79,7 @@ class CreateNews(AddNewsBD):
         return super().add_news_to_db(request, last_operation_time)
 
 
-class NewsPage(ListView):
+class NewsPage(ListView, NewsBD):
     model = News
     paginate_by = 5
     template_name = "news/news_home.html"
@@ -108,3 +109,8 @@ class NewsPage(ListView):
             ).order_by("-id")
 
         return news_list
+
+    def post(self, request):
+        news_id = self.request.POST.get("id")
+
+        return super().update_views(request, self.model, news_id)

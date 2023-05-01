@@ -11,6 +11,7 @@ class News(models.Model):
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.DO_NOTHING, blank=True
     )
+    views = models.IntegerField(verbose_name="Кол-во просмотров", default=0)
 
     def __str__(self):
         return self.name_news
