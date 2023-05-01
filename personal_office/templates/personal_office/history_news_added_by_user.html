@@ -1,0 +1,41 @@
+{% extends "personal_office/personal_office.html" %}
+
+{% block title %} История {% endblock %}
+
+{% block main %}
+<div class="features">
+    {% for news in history_news_user %}
+        <div class="news_text">
+            <blockquote class="alert">
+                <h3>{{ news.name_news }}</h3>
+                <p>{{ news.anons }}</p>
+                <a href="{% url 'news:news-detail-view' news.id%}"> <button class="button">Читать</button></a>
+            </blockquote>
+    </div>
+    {% endfor %}
+    <div class="page_num">
+        {% if page_obj.has_other_pages %}
+
+            {% if page_obj.has_previous %}
+                <a href="?page={{page_obj.previos_page_number }}"><button class="page_move">Назад</button></a>
+            {% endif %}
+
+            {% for num_page in page_obj.paginator.page_range %}
+
+                {% if num_page == page_obj.number %}
+                    <a href="?page={{num_page}}" ><button class="page_num_disabled">{{ num_page }}</button></a>
+
+                {% elif num_page >= page_obj.number|add:-5 and num_page <= page_obj.number|add:5 %}
+                    <a href="?page={{num_page}}" ><button class="page_num">{{ num_page }}</button></a>
+
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+                <a href="?page={{page_obj.next_page_number }}" ><button class="page_move">Далее</button></a>
+            {% endif %}
+
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

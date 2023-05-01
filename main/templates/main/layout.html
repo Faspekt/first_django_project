@@ -20,7 +20,7 @@
     <div class="personal_office">
         {% if user.is_authenticated %}
             <img src="{% static 'main/image/avatar-default-icon.png'%}" alt="user_avatar" class="user_avatar_deafult">
-            <a href="{% url 'user:login' %}" class="login_personal_office">Личный кабинет</a>
+            <a href="{% url 'personal_office:personal_office_page' pk=user.id%}" class="login_personal_office">Личный кабинет</a>
         {% else %}
             <img src="{% static 'main/image/avatar-default-icon.png'%}" alt="user_avatar" class="user_avatar_deafult">
             <a href="{% url 'user:login' %}" class="login_personal_office">Войти</a>

@@ -24,5 +24,6 @@ urlpatterns = [
     path("", include("main.urls")),
     path("news/", include("news.urls")),
     path("users/", include("users.urls")),
+    path("personal_office/", include("personal_office.urls")),
     path("__debug__/", include("debug_toolbar.urls")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

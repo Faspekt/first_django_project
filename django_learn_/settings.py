@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     "main",
     "news",
     "users",
+    "personal_office",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
