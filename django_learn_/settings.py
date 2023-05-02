@@ -95,6 +95,15 @@ TEMPLATES = [
     },
 ]
 
+
+CACHES = {
+    "default": {
+        "BACKEND": getenv("CACHE_BACKEND"),
+        "LOCATION": getenv("CACHE_PATH"),
+    }
+}
+
+
 WSGI_APPLICATION = "django_learn_.wsgi.application"
 
 

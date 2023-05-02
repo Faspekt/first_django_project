@@ -1,12 +1,16 @@
+import time
+
+
 from django.shortcuts import render, redirect
 from .models import News
 from .forms import NewsForm
 from django.views.generic import DetailView, UpdateView, DeleteView, ListView
 from django.db.models import Q
 from .services import NewsBD
+from django.http import HttpResponse, Http404
 
 
-class NewsDetailView(DetailView):
+class NewsDetailView(DetailView, NewsBD):
     model = News
     template_name = "news/detail-view.html"
     context_object_name = "news_detal"
@@ -28,7 +32,12 @@ class NewsDetailView(DetailView):
         news = self.get_queryset()
         context = {"news": news}
 
-        return render(self.request, self.template_name, context)
+        if HttpResponse.status_code == 200 and news.exists():
+            self.request.session["time_views_update"] = time.time()
+
+            return render(self.request, self.template_name, context)
+        else:
+            raise Http404
 
 
 class NewsUpdatePage(UpdateView):
@@ -76,7 +85,7 @@ class CreateNews(NewsBD):
     def post(self, request):
         last_operation_time = self.request.session.get("last_operation_time", None)
 
-        return super().add_news_to_db(request, last_operation_time)
+        return super().create_news(request, last_operation_time)
 
 
 class NewsPage(ListView, NewsBD):
@@ -113,4 +122,4 @@ class NewsPage(ListView, NewsBD):
     def post(self, request):
         news_id = self.request.POST.get("id")
 
-        return super().update_views(request, self.model, news_id)
+        return super().add_views_cache(request, self.model, news_id)
