@@ -99,7 +99,7 @@ TEMPLATES = [
 CACHES = {
     "default": {
         "BACKEND": getenv("CACHE_BACKEND"),
-        "LOCATION": getenv("CACHE_PATH"),
+        "LOCATION": getenv("CACHE_LOCATION"),
     }
 }
 
@@ -112,12 +112,12 @@ WSGI_APPLICATION = "django_learn_.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": getenv("ENGINE_DB"),
-        "NAME": getenv("NAME_DB"),
-        "USER": getenv("USER_DB"),
-        "PASSWORD": getenv("PASSWORD_DB"),
-        "HOST": getenv("HOST_DB"),
-        "PORT": getenv("PORT_DB"),
+        "ENGINE": getenv("DB_ENGINE"),
+        "NAME": getenv("DB_NAME"),
+        "USER": getenv("DB_USER"),
+        "PASSWORD": getenv("DB_PASS"),
+        "HOST": getenv("DB_HOST"),
+        "PORT": getenv("DB_PORT"),
     }
 }
 
@@ -198,3 +198,6 @@ LOGGING = {
 }
 
 INTERNAL_IPS = [getenv("INTERNAL_IPS")]
+
+CELERY_BROKER_URL = getenv("CELERY_BROKER_URL")
+CELERY_RESULT_BACKEND = getenv("CELERY_RESULT_BACKEND")
