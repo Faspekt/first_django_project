@@ -5,6 +5,8 @@ __pycache__/
 *.vscode
 *.flake8
 *.htaccess
+*.env
+*.env*
 # C extensions
 *.so
 z.caches/
