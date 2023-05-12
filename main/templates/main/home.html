@@ -8,10 +8,11 @@
 
 <div class="features">
     {% csrf_token %}
+
     {% if user.is_authenticated %}
         <h1>{{ title }}</h1>
         <p>Сдесь мы главные</p>
-        <a href="{% url 'user:logout'%}">Выйти</a>
+
         <button class = "button"> Нет, я главный </button>
     {% else %}
         <h1>Если хотите добавить статью сначала авторизуйтесь!!!</h1>
