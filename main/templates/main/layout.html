@@ -19,7 +19,9 @@
 <body>
     <div class="personal_office">
         {% if user.is_authenticated %}
-            <img src="{{user.avatar}}" alt="user_avatar" class="user_avatar_deafult">
+            <a href="{% url 'personal_office:change_avatar' pk=user.id %}">
+                <img src="{{user.avatar.url}}" alt="user_avatar" class="user_avatar_deafult">
+            </a>
             <a href="{% url 'personal_office:personal_office_page' pk=user.id%}" class="login_personal_office">Личный кабинет</a>
         {% else %}
             <img src="{% static 'main/image/avatar-default-icon.png'%}" alt="user_avatar" class="user_avatar_deafult">
