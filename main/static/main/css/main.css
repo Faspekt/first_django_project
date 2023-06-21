@@ -252,3 +252,37 @@ main div.features p.author {
     font-size: 110%;
     transform: scale(1.1);
 }
+
+
+main div.features div.avatar_user {
+    position: relative;
+    
+    width: 90%;
+    height: 100%;
+
+}
+
+main div.features div.avatar_user img.user_avatar{
+    width: 50vh;
+}
+
+main div.features div.change_avatar{
+    width: 100%;
+}
+
+main div.features div.change_avatar form{
+    width: 90%;
+}
+
+main form.search_form {
+    width: 45%;
+}
+
+main form.search_form input{
+    position: relative;
+    margin-left: -4%;
+}
+
+main form.search_form button {
+    margin-top: -5%;
+}
