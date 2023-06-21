@@ -1,0 +1,19 @@
+{% extends "personal_office/personal_office.html" %}
+
+{% block title %} Смена аватара {% endblock %}
+
+{% block main %}
+    <div class="features">
+        <div class="avatar_user">
+            <img src="{{user.avatar.url}}" alt="user_avatar" class="user_avatar">
+        </div>
+        <div class="change_avatar">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.avatar }}
+
+                <button class="button" type="submit">Изменить</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
