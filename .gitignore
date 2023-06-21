@@ -7,7 +7,7 @@ __pycache__/
 *.htaccess
 *.env
 *.env*
-# C extensions
+media/avatar
 *.so
 z.caches/
 # Distribution / packaging

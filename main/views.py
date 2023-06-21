@@ -16,7 +16,7 @@ class HomePage(ListView):
 
         user = self.request.session.get("user", None)
         user_id = self.request.user.id
-        data = {"title": "Главная", "user": user}
+        data = {"title": "Главная"}
 
         if user is not None or user_id is None:  # If the user in the session exists
 
@@ -33,7 +33,7 @@ class HomePage(ListView):
                 "id": user.pk,
                 "username": user.username,
                 "avatar": user.avatar.url,
-                "is_authenticated": True
+                "is_authenticated": True,
             }
             return render(
                 self.request,

@@ -49,7 +49,9 @@ class NewsBD(View):
             views_count = cache.get(key)
 
             if views_count is None:
-                views_count = model.objects.filter(id=news_id).values_list("views", flat=True)[0]
+                views_count = model.objects.filter(id=news_id).values_list(
+                    "views", flat=True
+                )[0]
                 cache.set(key, views_count + 1, 600)
 
             else:
