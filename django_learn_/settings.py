@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 from dotenv import load_dotenv
-from os import getenv
+from os import getenv, path
 from .json_format import CustomJsonFormatter
 
 
@@ -158,6 +158,10 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_DIRS = [BASE_DIR / "static"]
+
+MEDIA_ROOT = path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
